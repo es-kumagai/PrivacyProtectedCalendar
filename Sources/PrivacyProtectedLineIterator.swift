@@ -37,6 +37,7 @@ private extension PrivacyProtectedLineIterator {
         "END",
         "EXDATE",
         "LAST-MODIFIED",
+        "PRIORITY",
         "RDATE",
         "RECURRENCE-ID",
         "RELATED-TO",
@@ -62,6 +63,7 @@ private extension PrivacyProtectedLineIterator {
         "ATTACH",
         "ATTENDEE",
         "CONFERENCE",
+        "GEO",
         "LOCATION",
         "ORGANIZER",
         "PARTSTAT",
@@ -112,7 +114,10 @@ private extension PrivacyProtectedLineIterator {
             "DESCRIPTION",
             "SUMMARY":
             return line.replacingValue(with: "予定あり")
-        
+            
+        case "CATEGORIES":
+            return line.replacingValue(with: "所用")
+            
         default:
 
             for prefix in ignoringNamePrefixes where line.name.hasPrefix(prefix) {
